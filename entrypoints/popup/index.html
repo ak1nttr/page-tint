@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Page Tint</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Page Tint</h1>
+      <label class="switch" title="Aç / kapat (Alt+Shift+L)">
+        <input type="checkbox" id="enabled" aria-label="Aç / kapat" />
+        <span></span>
+      </label>
+    </header>
+
+    <p id="unsupported" class="notice" hidden>
+      Chrome bu sayfada uzantıların çalışmasına izin vermiyor (ayarlar, yeni sekme, Web Store gibi sayfalar).
+    </p>
+
+    <main id="controls">
+      <div class="segmented" role="radiogroup" aria-label="Nereye uygulansın">
+        <button type="button" data-scope="tab" role="radio">Bu sekme</button>
+        <button type="button" data-scope="window" role="radio">Bu pencere</button>
+      </div>
+
+      <div class="presets" id="presets"></div>
+
+      <section>
+        <div class="row" data-field="brightness">
+          <label for="brightness">Parlaklık</label>
+          <output></output>
+          <input type="range" id="brightness" min="30" max="150" step="1" />
+        </div>
+        <div class="row" data-field="contrast">
+          <label for="contrast">Kontrast</label>
+          <output></output>
+          <input type="range" id="contrast" min="50" max="150" step="1" />
+        </div>
+        <div class="row" data-field="warmth">
+          <label for="warmth">Sıcaklık</label>
+          <output></output>
+          <input type="range" id="warmth" min="0" max="100" step="1" />
+        </div>
+        <div class="row" data-field="saturation">
+          <label for="saturation">Doygunluk</label>
+          <output></output>
+          <input type="range" id="saturation" min="0" max="150" step="1" />
+        </div>
+        <label class="check">
+          <input type="checkbox" id="invert" />
+          Koyu mod <small>renkleri ters çevirir, resimlere dokunmaz</small>
+        </label>
+      </section>
+
+      <section>
+        <h2>Renk katmanı</h2>
+        <div class="row" data-field="tintStrength">
+          <input type="color" id="tintColor" aria-label="Katman rengi" />
+          <output></output>
+          <input type="range" id="tintStrength" min="0" max="90" step="1" aria-label="Katman yoğunluğu" />
+        </div>
+        <div class="segmented small" role="radiogroup" aria-label="Katman nereyi boyasın">
+          <button type="button" data-blend="multiply" role="radio" title="Beyaz alanlar seçtiğin renge döner, yazılar koyu kalır">Açık alanlar</button>
+          <button type="button" data-blend="screen" role="radio" title="Siyah alanlar seçtiğin renge açılır">Koyu alanlar</button>
+          <button type="button" data-blend="normal" role="radio" title="Bütün sayfanın üstüne düz renk">Hepsi</button>
+        </div>
+      </section>
+
+      <footer>
+        <button type="button" id="reset" class="link">Sıfırla</button>
+        <span>Çift tık: değeri sıfırla</span>
+      </footer>
+    </main>
+
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>
